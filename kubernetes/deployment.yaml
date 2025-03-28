@@ -1,0 +1,20 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wine-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wine-api
+  template:
+    metadata:
+      labels:
+        app: wine-api
+    spec:
+      containers:
+      - name: wine-api
+        image: wine-api:latest
+        ports:
+        - containerPort: 8000
