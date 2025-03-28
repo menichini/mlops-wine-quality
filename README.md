@@ -33,32 +33,42 @@ Prever a qualidade sensorial de vinhos com base em características físico-quí
 ```bash
 git clone https://github.com/menichini/mlops-wine-quality.git
 cd mlops-wine-quality
+```
 
-2.	Instale os pacotes:
+2. Instale os pacotes:
+
+```bash
 pip install -r requirements.txt
+```
 
-3.	Rode o treinamento:
+3. Rode o treinamento:
+
+```bash
 python src/train.py
+```
 
-4.	Sirva a API:
+4. Sirva a API:
+
+```bash
 uvicorn api.main:app --reload
+```
 
 📦 Deploy com Docker
 
+```bash
 docker build -t wine-api:latest -f docker/Dockerfile .
 docker run -p 8000:8000 wine-api:latest
+```
 
 ☸️ Deploy no Kubernetes
 
+```bash
 kubectl apply -f kubernetes/deployment.yaml
 kubectl apply -f kubernetes/service.yaml
+```
 
 📊 Exemplo de Previsão via API
 
+```bash
 curl -X POST http://localhost:8000/predict -H "Content-Type: application/json" -d '{"features": [7.4, 0.7, 0, 1.9, 0.076, 11, 34, 0.9978, 3.51, 0.56, 9.4]}'
-
-📄 Licença
-
-MIT © Paulo Menichini
-
 ```
